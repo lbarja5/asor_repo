@@ -10,6 +10,6 @@
 int main(){
     errno = setuid(0);
     if (errno == -1)
-        perror("Se ha producido un error");
+        perror("Se ha producido un error en setuid");
     return 1;
 }
