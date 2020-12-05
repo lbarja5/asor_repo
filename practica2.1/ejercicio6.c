@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 	long argmax = sysconf(_SC_ARG_MAX);
         long maxchild = sysconf(_SC_CHILD_MAX);
         long maxopen = sysconf(_SC_OPEN_MAX);	
-	if(argmax == -1 && maxchild == -1 && maxopen == -1)
+	if(argmax == -1 || maxchild == -1 || maxopen == -1)
 		perror("Se ha producido un error en sysconf");
 	else
 	{
