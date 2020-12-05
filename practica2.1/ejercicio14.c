@@ -11,6 +11,6 @@ int main()
 	time_t t;
 	time(&t);
 	tiempo = localtime(&t);
-	printf("Año: %i \n", tiempo->tm_year);
+	printf("Año: %i \n", tiempo->tm_year+1900);
 	return 0;
 }
