@@ -28,7 +28,7 @@ int main()
 		return -1;
 		
 	}
-	printf("%s, %s de %s de %i, %s:%s",semana,dia, mes,tiempo->tm_year+1900,hora,min);
+	printf("%s, %s de %s de %i, %s:%s\n",semana,dia,mes,tiempo->tm_year+1900,hora,min);
 	return 0;
 }
 
