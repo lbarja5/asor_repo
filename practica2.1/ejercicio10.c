@@ -12,9 +12,14 @@ int main(int argc, char **argv)
 	uid_t user = getuid();
 	pw = getpwuid(user);
 	
-	printf("Nombre de usuario: %s\n",pw->pw_name);
-	printf("Directorio home: %s\n",pw->pw_dir);
-	printf("Descripcion del usuario: %s\n",pw->pw_gecos);
+	if(pw != NULL)
+	{	
+		printf("Nombre de usuario: %s\n",pw->pw_name);
+		printf("Directorio home: %s\n",pw->pw_dir);
+		printf("Descripcion del usuario: %s\n",pw->pw_gecos);
+	}
+	else
+		perror("Se ha producido un error en getpwuid");
 	return 0;
 }
 
