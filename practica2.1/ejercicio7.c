@@ -7,8 +7,8 @@
 int main(int argc, char **argv)
 {
 	long maxlink = pathconf("/root/asor_repo/practica2.1", _PC_LINK_MAX);
-        long maxpath = pathconf("/root/asor_repo/practica2.1", );
-        long maxname = pathconf("/root/asor_repo/practica2.1", );
+        long maxpath = pathconf("/root/asor_repo/practica2.1", _PC_PATH_MAX);
+        long maxname = pathconf("/root/asor_repo/practica2.1", _PC_NAME_MAX);
 	if(maxlink == -1 || maxpath == -1 || maxname == -1)
 		perror("Se ha producido un error en pathconf\n");
 	else
