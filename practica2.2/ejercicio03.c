@@ -13,5 +13,12 @@
 //-rwxr----- 1 root root 6 Dec 14 11:32 fichero
 //----------------------------------------------------
 //----------------------------------------------------
-//rw-r--r-x
-//
+//---------------------rw-r--r-x----------------------
+//# chmod 645 fichero
+//# ls -l fichero
+//-rw-r--r-x 1 root root 6 Dec 14 11:32 fichero
+//----------------------------------------------------
+//# chmod 777 fichero
+//# chmod u+rw-x,g+r-wx,o+rx-w fichero
+//# ls -l fichero
+//-rw-r--r-x 1 root root 6 Dec 14 11:32 fichero
