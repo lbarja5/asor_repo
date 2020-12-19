@@ -40,3 +40,6 @@ int main (int argc, char **argv){
 	printf("Ultimo acceso: %s\n", ctime(&statbuf.st_atime));
 	return 0;
 }
+// ¿Qué diferencia hay entre st_mtime y st_ctime?
+//st_mtime es modificado por write, utime...
+//st_ctime es modificado cuando se altera el i-nodo.
