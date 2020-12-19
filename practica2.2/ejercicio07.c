@@ -17,3 +17,7 @@ int main()
 
 	return 0;
 }
+//# ls -l
+//-rwxr-x--- 1 root root    0 Dec 19 16:42 6
+//# umask
+//0022
