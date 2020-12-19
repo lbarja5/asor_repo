@@ -18,10 +18,12 @@ int main(int argc, char **argv)
 	
 	dup2(fd, 1);
 	close(fd);
+	
 	int i = 2;
 	while(i < argc){
 		printf("%s\n",argv[i]);
 		i++;
 	}
+	
 	return 0;
 }
