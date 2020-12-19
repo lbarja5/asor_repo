@@ -6,16 +6,14 @@
 
 int main()
 {
-	if(remove("5.txt") == 0){
-		mode_t mascara = umask(0027);
-		int fd = open("5.txt", O_RDWR|O_CREAT, mascara);
-		if(fd == -1)
-			printf("ERROR en open\n");
-		else
-			printf("Se ha creado el fichero\n");
-		close(fd);
-	}else{
-		perror("El fichero ya existe y no sido posible borrarlo\n");
-	}
+	unlink("6");
+	umask(0027);
+	int fd = open("6", O_CREAT,0777);
+	if(fd == -1)
+		printf("ERROR en open\n");
+	else
+		printf("Se ha creado el fichero\n");
+	close(fd);
+
 	return 0;
 }
