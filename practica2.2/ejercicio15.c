@@ -20,14 +20,21 @@ int main(int argc, char **argv)
 		//Desbloqueado -> Fijar el cerrojo y escribir la hora actual.
 		//Sleep 30seg y liberarlo
 		printf("Desbloqueado\n");
-		char hora[10];
-		strftime(hora,sizeof(hora),"%R",time(0));
-		printf("Hora: %s\n",hora);
+		char hora[20];
+		time_t t;
+		time(&t);
+		strftime(hora,sizeof(hora),"%T",localtime(&t));
+		printf("Hora block: %s\n",hora);
 		sleep(30);
 		lockf(fd, F_ULOCK, 0);
+		time(&t);
+                strftime(hora,sizeof(hora),"%T",localtime(&t));
+                printf("Hora unblock: %s\n",hora);
+
 	}else{
 		//Bloqueado -> Terminar el programa
 		printf("Bloqueado\n");
 	}
+	close(fd);
 	return 0;
 }
