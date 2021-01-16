@@ -39,6 +39,7 @@ int main(int argc, char **argv)
             perror("fork()");
             return -1;
         case 0: //Hijo
+            sleep(10);
             printf("---Hijo---\n");
             printf("Nueva sesion: %ld\n",setsid());
             if(chdir("/tmp") == -1){
@@ -48,10 +49,12 @@ int main(int argc, char **argv)
             atributos();
             return 0; 
         default: //Padre
-            sleep(3);
+            sleep(1);
             printf("---Padre---\n");
             atributos();
             return 0;
     }
     return 0;
 }
+//Si finalizase la ejecucion del proceso hijo antes que la del padre
+//este se quedaria en estado zombie, hasta que reciba una señal de fin
