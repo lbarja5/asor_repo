@@ -15,9 +15,9 @@ int main()
     printf("Id de grupo: %ld\n",pgid);
     pid_t sid = getsid(0);
     printf("Id de sesion: %ld\n",sid);
-    struct rlimit *rlim;
-    if(getrlimit(RLIMIT_NOFILE,rlim) == 0)///////////////////
-        printf("Max ficheros abiertos: %i\n",rlim->rlim_max);
+    struct rlimit rlim;
+    if(getrlimit(RLIMIT_NOFILE, &rlim) == 0)///////////////////
+        printf("Max ficheros abiertos: %i\n",rlim.rlim_max);
     else
     {
         perror("getrlimit");
