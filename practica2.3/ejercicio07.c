@@ -21,3 +21,6 @@ int main(int argc, char **argv)
     
     return 0;
 }
+//Con la funcion execvp() no se muestra el texto porque sustituye 
+//El proceso que esta ejecutando por el que pasa por parametro.
+//En cambio con system el proceso del main espera a que system termine.
