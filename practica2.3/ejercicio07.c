@@ -5,8 +5,12 @@
 
 int main(int argc, char **argv)
 {
+    if (argc < 2) {
+        	fprintf(stderr, "Usage: %s <command>\n", argv[0]);
+        	return -1;
+        }
     //---System-----
-    /*char* buf = (char*)malloc(1000);
+    char* buf = (char*)malloc(1000);
     int i;
     for(i=1;i<argc;i++)
     {
@@ -14,9 +18,12 @@ int main(int argc, char **argv)
         strcat(buf," ");
     }
     system(buf);
-    free(buf);*/
+    free(buf);
     //--------------
-    execvp(argv[1], argv + 1);
+    
+    //---Execvp----
+    //execvp(argv[1], argv + 1);
+    //--------------
     printf("El comando terminó de ejecutarse\n");
     
     return 0;
