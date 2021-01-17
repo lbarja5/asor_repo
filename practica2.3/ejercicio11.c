@@ -4,7 +4,7 @@
 
 //Bloquear SIGINT y SIGTSTP
 int main(){
-    if(setenv("SLEEP_SECS","10",0) != 0){
+    if(setenv("SLEEP_SECS","5",0) != 0){
         perror("setenv");
         return -1;
     }
@@ -13,7 +13,9 @@ int main(){
     sigaddset(&blk_set, SIGINT);
     sigaddset(&blk_set, SIGTSTP);
     sigprocmask(SIG_BLOCK, &blk_set, NULL);
-    sleep((int)*getenv("SLEEP_SECS"));
+    char* tiempo = getenv("SLEEP_SECS");
+    int t = atoi(tiempo);
+    sleep(t);
     if(sigpending(&blk_set) != 0){
         perror("sigpending");
         return -1;
