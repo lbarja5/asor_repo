@@ -28,6 +28,7 @@ int main(){
     if(sigismember(&pend,SIGTSTP)){
         printf("Se ha detectado la señal SIGTSTP. El programa se detendrá\n");
         sigprocmask(SIG_UNBLOCK, &pend, NULL);
-}
     }
+    return 0;
+}
     
