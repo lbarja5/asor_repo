@@ -7,30 +7,37 @@
 #include <netdb.h>
 
 int main(int argc, char** argv){
-    struct addrinfo filtro;
-    struct addrinfo *res;
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <dir|ip|url>\n", argv[0]);
+    	return -1;
+    }
 
-    memset(&filtro, 0, sizeof(struct addrinfo));
+    struct addrinfo filtro;
+    struct addrinfo *res, *rp;
+
+    memset(&filtro, 0, sizeof(filtro));
     filtro.ai_flags = AI_PASSIVE;
     filtro.ai_family = AF_UNSPEC;
-    filtro.ai_socktype = SOCK_STREAM;
+    filtro.ai_socktype = 0;
+    filtro.ai_protocol = 0;
 
-    int rc = getaddrinfo(argv[1], argv[2], &filtro, &res);
+    int rc = getaddrinfo(argv[1], NULL, &filtro, &res);
 
     if(rc != 0){
-        printf("Error getaddinfo: %s\n",gai_strerror(rc));
+        fprintf(stderr, "Error getaddinfo: %s\n",gai_strerror(rc));
         return -1;
     }
 
-    for(struct addrinfo*i = res; i != NULL; i = i->ai_next){
+    for(rp = res; rp != NULL; rp = rp->ai_next){
         char host[NI_MAXHOST];
         char serv[NI_MAXSERV];
 
-        getnameinfo(i->ai_addr, i->ai_addrlen, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
+        getnameinfo(rp->ai_addr, rp->ai_addrlen, host, NI_MAXHOST, serv, NI_MAXSERV, NI_NUMERICHOST | NI_NUMERICSERV);
 
-        printf("Host: %s. Puerto: %s.\n", host, serv);
+        printf("%s  %i  %i\n", host,rp->ai_family, rp->ai_socktype);
     }
 
     freeaddrinfo(res);
+
     return 0;
 }
